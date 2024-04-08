@@ -1,6 +1,23 @@
 <project name="practice" default="compile" basedir=".">
+    <property name="src.dir" value="src"/>
+    <property name="bin.dir" value="bin"/>
     <target name="compile">
         <mkdir dir="bin"/> <!-- 出力先のディレクトリを作成 -->
-        <javac srcdir="src" destdir="bin"/>
+        <javac srcdir="${src.dir}" destdir="${bin.dir}"/>
+    </target>
+
+    <!-- ビルドのディレクトリ -->
+    <property name="build.dir" value="build"/>
+    <!-- ビルドされるjarファイル名 -->
+    <property name="jar.file" value="MyProject.jar"/>
+    <!-- jarターゲット -->
+    <target name="jar" depends="compile">
+        <!-- buildディレクトリを作成 -->
+        <mkdir dir="${build.dir}"/>
+        <!-- jarファイルを作成 -->
+        <jar destfile="${build.dir}/${jar.file}">
+            <!-- ソースコードのディレクトリを追加 -->
+            <fileset dir="${src.dir}"/>
+        </jar>
     </target>
 </project>
