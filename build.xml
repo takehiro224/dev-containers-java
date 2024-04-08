@@ -1,0 +1,6 @@
+<project name="practice" default="compile" basedir=".">
+    <target name="compile">
+        <mkdir dir="bin"/> <!-- 出力先のディレクトリを作成 -->
+        <javac srcdir="src" destdir="bin"/>
+    </target>
+</project>
